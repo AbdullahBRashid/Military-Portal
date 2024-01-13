@@ -1,42 +1,39 @@
-import { useEffect, useState } from 'react'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+
 import './App.css'
 
-import GoogleLogin from './Components/GoogleLogin'
-import {auth} from './firebase'
-import { User } from '@firebase/auth';
+import {useUser} from './contexts/UserContext'
+
+import Header from './Layout/Header/Header'
+import Footer from './Layout/Footer/Footer'
+
+import Home from './Pages/Home/Home'
+import Login from './Pages/Login/Login'
+import Dashboard from './Pages/Dashboard/Dashboard'
 
 function App() {
 
-  // useEffect(() => {
+  const user = useUser()
 
-  // })
-
-  const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  auth.onAuthStateChanged((user) => {
-    console.log("Hi");
-    setUser(user);
-    setLoading(false);
-  })
-
-  useEffect(() => {
-    if (!loading) {
-      // auth.signOut();
-      // console.log("here")
-      // console.log(auth.currentUser?.displayName)
-    }
-  }, [user])
-
-  if (loading) {
-    return <>Loading...</>
+  if (!user) {
+    return (
+      <>
+        Loading ...
+      </>
+    )
   }
-
 
   return (
     <>
-      <h1>Hello World</h1>
-      <GoogleLogin></GoogleLogin>
+      <Router>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+          </Routes>
+          <Footer />
+      </Router>
     </>
   )
 }
