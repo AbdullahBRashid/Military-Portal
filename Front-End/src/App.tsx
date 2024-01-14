@@ -13,16 +13,6 @@ import Dashboard from './Pages/Dashboard/Dashboard'
 
 function App() {
 
-  const user = useUser()
-
-  if (!user) {
-    return (
-      <>
-        Loading ...
-      </>
-    )
-  }
-
   return (
     <>
       <Router>
