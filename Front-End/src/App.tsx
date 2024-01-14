@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 import './App.css'
 
-import {useUser} from './contexts/UserContext'
+import {useLoading} from './contexts/UserContext'
 
 import Header from './Layout/Header/Header'
 import Footer from './Layout/Footer/Footer'
@@ -12,6 +12,14 @@ import Login from './Pages/Login/Login'
 import Dashboard from './Pages/Dashboard/Dashboard'
 
 function App() {
+
+  const loading = useLoading();
+
+  if (loading) {
+    return (
+      <>Loading ...</>
+    )
+  }
 
   return (
     <>

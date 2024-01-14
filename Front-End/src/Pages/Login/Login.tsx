@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { useUser } from '../../contexts/UserContext'
 import { useNavigate } from 'react-router-dom';
@@ -9,9 +9,13 @@ function Login() {
     const navigate = useNavigate();
 
     const user = useUser();
-    if (user) {
-        navigate('/dashboard');
-    }
+
+    useEffect( () => {
+        if (user) {
+            navigate('/dashboard');
+        }
+    })
+
 
     return (
         <>
