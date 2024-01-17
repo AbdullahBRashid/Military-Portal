@@ -34,15 +34,10 @@ const MissilePage = () => {
   }, [])
 
   const handleEditField = (field: string, newValue: string) => {
-    // Handle the edit logic here
     setMissile({ ...missile, [field]: newValue });
-    console.log(missile);
-    console.log(`Field ${field} updated with value: ${newValue}`);
   };
 
   const handleCancelEdit = () => {
-    // Handle the cancel edit logic here
-    console.log("Edit canceled");
   };
 
   return (

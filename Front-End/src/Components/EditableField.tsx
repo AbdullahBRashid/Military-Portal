@@ -1,5 +1,4 @@
-// EditableField.tsx
-import React, { useState } from "react";
+import { useState } from "react";
 
 interface EditableFieldProps {
   label: string;
@@ -8,7 +7,7 @@ interface EditableFieldProps {
   onCancel: () => void;
 }
 
-const EditableField: React.FC<EditableFieldProps> = ({ label, value, onEdit, onCancel }) => {
+const EditableField = ({ label, value, onEdit, onCancel }: EditableFieldProps) => {
   const [editable, setEditable] = useState(false);
   const [fieldValue, setFieldValue] = useState(value.toString());
 
