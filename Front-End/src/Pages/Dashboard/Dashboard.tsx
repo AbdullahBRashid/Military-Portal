@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom"
+import { Route, Routes, Link } from "react-router-dom"
 import BaseDashboard from "./Bases/BaseDashboard"
 import MissileDashboard from "./Missiles/MissileDashboard"
 import MissilePage from "./Missiles/MissilePage"
@@ -11,10 +11,10 @@ function Dashboard() {
 
       <div className="flex justify-center">
         <Button className=" mr-5">
-          <a href="/dashboard/base">Bases</a>
+          <Link to="/dashboard/base">Bases</Link>
         </Button>
         <Button>
-          <a href="/dashboard/missile">Missiles</a>
+          <Link to="/dashboard/missile">Missiles</Link>
         </Button>
       </div>
       <Routes>
