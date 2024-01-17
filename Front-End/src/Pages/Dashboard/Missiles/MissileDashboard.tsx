@@ -2,13 +2,16 @@ import { useEffect, useState } from "react"
 import { firestore } from "../../../firebase"
 import { Missile } from "../../../types"
 import MissileCard from "./MissileCard"
-
+import NewMissileForm from "./NewMissileForm"
 
 function MissileDashboard() {
 
   const missilesRef = firestore.collection('missiles')
-
   const [missiles, setMissiles] = useState<Missile[]>([]);
+  const [missileAdded, setMissileAdded] = useState<boolean>(false);
+  const [missileDeleted, setMissileDeleted] = useState<boolean>(false);
+
+  const [showNewMissileForm, setShowNewMissileForm] = useState<boolean>(false);
 
   useEffect(() => {
     const unsubscribe = async () => {
@@ -25,7 +28,15 @@ function MissileDashboard() {
     };
   
     unsubscribe();
-  }, []);
+  }, [missileAdded, missileDeleted]);
+
+  const onUpload = () => {
+    setMissileAdded(!missileAdded);
+  }
+
+  const onDelete = () => {
+    setMissileDeleted(!missileDeleted);
+  }
 
   return (
       <div className="mt-5">
@@ -33,9 +44,15 @@ function MissileDashboard() {
         <div className="flex items-center justify-center">
           {missiles.map((missile) => {
             return (
-              <MissileCard key={missile.name} missile={missile} />
+              <MissileCard onDelete={onDelete} key={missile.id} missile={missile} />
             )
           })}
+        </div>
+        {showNewMissileForm && <NewMissileForm onUpload={onUpload} />}
+        <div className="flex items-center justify-center">
+          <button onClick={() => setShowNewMissileForm(!showNewMissileForm)} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+            {showNewMissileForm ? "Cancel" : "Add Missile"}
+          </button>
         </div>
       </div>
   )
