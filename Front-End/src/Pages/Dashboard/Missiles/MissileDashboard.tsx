@@ -41,7 +41,7 @@ function MissileDashboard() {
   return (
       <div className="mt-5">
         <h2 className="text-center">Missiles</h2>
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center flex-wrap">
           {missiles.map((missile) => {
             return (
               <MissileCard onDelete={onDelete} key={missile.id} missile={missile} />
