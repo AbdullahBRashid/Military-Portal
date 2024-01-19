@@ -5,6 +5,8 @@ import { firestore } from "../../../firebase"
 import { Missile, Base } from "../../../types"
 
 import BaseCard from "./BaseCard"
+import NewBaseForm from "./NewBaseForm"
+import { Button } from "../../../Components/Button"
 
 export interface Missiles {
   [key: string]: Missile[]
@@ -16,6 +18,10 @@ function BaseDashboard() {
 
   const [bases, setBases] = useState<Base[]>([])
   const [missiles, setMissiles] = useState<Missiles>({});
+
+  const [basesChanged, setBasesChanged] = useState(false);
+
+  const [showNewBaseForm, setShowNewBaseForm] = useState(false);
 
   useEffect(() => {
     const unsubscribe = async () => {
@@ -46,18 +52,25 @@ function BaseDashboard() {
     };
   
     unsubscribe();
-  }, []);
+  }, [basesChanged]);
 
   return (
       <div className="mt-5">
         <h2 className="text-center">Bases</h2>
-        <div>
+        <div className="flex justify-center flex-wrap">
           {bases.map((base) => {
             return (
-              <BaseCard key={base.id} base={base} missiles={missiles} />
+              <BaseCard onDelete={() => setBasesChanged(!basesChanged)} key={base.id} base={base} missiles={missiles} />
             )
           })}
         </div>
+        {showNewBaseForm && <NewBaseForm onUpload={() => setBasesChanged(!basesChanged)} />}
+        <div className="mt-5 flex items-center justify-center">
+          { showNewBaseForm ?  
+            <Button onClick={() => setShowNewBaseForm(false)}>Cancel</Button>:
+            <Button onClick={() => setShowNewBaseForm(true)}>New Base</Button>
+          }
+        </div> 
       </div>
   )
 }

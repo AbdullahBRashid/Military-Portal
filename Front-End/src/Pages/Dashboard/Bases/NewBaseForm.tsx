@@ -4,6 +4,7 @@ import { addDoc, collection, GeoPoint } from "firebase/firestore";
 import { Base } from "../../../types"
 import { firestore } from "../../../firebase";
 
+import { Button } from "../../../Components/Button";
 
 function NewBaseForm(props: { onUpload: () => void }) {
     const [base, setBase] = useState<Base>({
@@ -45,7 +46,7 @@ function NewBaseForm(props: { onUpload: () => void }) {
         const newMissile: Base = {
             id: "",
             name: name,
-            location: base.location,
+            location: location,
             missiles: base.missiles,
         };
 
@@ -78,27 +79,22 @@ function NewBaseForm(props: { onUpload: () => void }) {
                 name="longitude"
                 id="longitude"
                 className="w-full p-2 border rounded-md focus:outline-none focus:border-blue-500"
-                onChange={(e) => setLocation( new GeoPoint(base.location.latitude, parseInt(e.target.value)) )}
+                onChange={(e) => setLocation( new GeoPoint(location.latitude, parseInt(e.target.value)) )}
               />
             </div>
             <div>
-              <label htmlFor="launchCost" className="text-sm font-semibold">
-                Launch Cost
+              <label htmlFor="latitude" className="text-sm font-semibold">
+                Latitude
               </label>
               <input
                 type="number"
-                name="launchCost"
-                id="launchCost"
+                name="latitude"
+                id="latitude"
                 className="w-full p-2 border rounded-md focus:outline-none focus:border-blue-500"
-                onChange={(e) => setLocation( new GeoPoint(parseInt(e.target.value), base.location.longitude))}
+                onChange={(e) => setLocation( new GeoPoint(parseInt(e.target.value), location.longitude))}
               />
             </div>
-            <button
-              type="submit"
-              className="bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition duration-300"
-            >
-              Submit
-            </button>
+            <Button type="submit">Submit</Button>
           </form>
         </div>
       );
