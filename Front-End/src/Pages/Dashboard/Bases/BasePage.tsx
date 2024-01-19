@@ -1,10 +1,12 @@
 // MissilePage.tsx
 import { useEffect, useState } from "react";
-import EditableField from "../../../Components/EditableField";
 import { useNavigate, useParams } from "react-router-dom";
 import { GeoPoint, deleteDoc, getDoc, updateDoc } from "firebase/firestore";
+
 import { firestore } from "../../../firebase";
 import { Base } from "../../../types";
+
+import EditableField from "../../../Components/EditableField";
 import BaseMissiles from "./BaseMissiles";
 
 const BasePage = () => {

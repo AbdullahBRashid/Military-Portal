@@ -1,7 +1,9 @@
 import { getDoc } from "firebase/firestore";
-import { Base, Missile, MissileStorage } from "../../../types";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+
+import { Base, Missile, MissileStorage } from "../../../types";
+
 import EditableField from "../../../Components/EditableField";
 
 function BaseMissiles(props: { base: Base, onEdit: (missiles: MissileStorage[]) => void, onCancel: any }) {
@@ -12,12 +14,10 @@ function BaseMissiles(props: { base: Base, onEdit: (missiles: MissileStorage[]) 
     let base = props.base;
 
   useEffect(() => {
-    // Update the base variable using props.base
     base = props.base;
   }, [props.base]);
 
   useEffect(() => {
-    // Fetch and display missiles when base.missiles changes
     const fetchMissiles = async () => {
       const newDisplayMissiles: { missile: Missile; quantity: number }[] = [];
 

@@ -1,10 +1,10 @@
-import { auth, provider } from '../firebase';
+import { auth, googleAuthProvider } from '../firebase';
 import { signInWithPopup } from '@firebase/auth';
 
 const YourComponent = () => {
   const signInWithGoogle = async () => {
     try {
-      await signInWithPopup(auth, provider);
+      await signInWithPopup(auth, googleAuthProvider);
     } catch (error) {
       console.error('Error signing in with Google:', error);
     }

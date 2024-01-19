@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { Missile } from "../../../types"
 import { addDoc, collection } from "firebase/firestore";
+
+import { Missile } from "../../../types"
 import { firestore, } from "../../../firebase";
 
 
@@ -25,7 +26,6 @@ function NewMissileForm(props: { onUpload: () => void }) {
 
     const uploadMissile = async () => {
         try {
-            console.log(missileRef);
             await addDoc(missileRef, {
                 name: missile.name,
                 blastRadius: missile.blastRadius,

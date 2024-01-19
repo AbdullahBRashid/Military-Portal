@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+
 import { auth } from '../firebase';
 import { User } from '@firebase/auth';
 
@@ -24,10 +25,8 @@ export const UserProvider: React.FC<UserContextProps> = ({ children }) => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
       if (authUser) {
-        // User is signed in
         setUser(authUser);
       } else {
-        // User is signed out
         setUser(null);
       }
       setLoading(false);

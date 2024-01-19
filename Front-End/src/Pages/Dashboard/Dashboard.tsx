@@ -1,9 +1,12 @@
 import { Route, Routes, Link } from "react-router-dom"
+
 import BaseDashboard from "./Bases/BaseDashboard"
 import MissileDashboard from "./Missiles/MissileDashboard"
+
 import MissilePage from "./Missiles/MissilePage"
-import { Button } from "../../Components/Button"
 import BasePage from "./Bases/BasePage"
+
+import { Button } from "../../Components/Button"
 
 function Dashboard() {
   return (
@@ -21,6 +24,7 @@ function Dashboard() {
       <Routes>
         <Route path="/base" element={<BaseDashboard />} />
         <Route path="/base/:id" element={<BasePage />} />
+        
         <Route path="/missile" element={<MissileDashboard />} />
         <Route path="/missile/:id" element={<MissilePage />} />
       </Routes>

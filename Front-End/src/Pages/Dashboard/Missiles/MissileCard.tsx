@@ -1,8 +1,10 @@
-import { Missile } from "../../../types"
-import { Button } from "../../../Components/Button";
 import { Link } from "react-router-dom";
 import { deleteDoc, doc } from "firebase/firestore";
+
+import { Missile } from "../../../types"
 import { firestore } from "../../../firebase";
+
+import { Button } from "../../../Components/Button";
 
 interface MissileCardProps {
     missile: Missile;

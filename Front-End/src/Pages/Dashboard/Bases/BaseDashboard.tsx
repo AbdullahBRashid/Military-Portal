@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react"
+import { getDoc } from "firebase/firestore"
+
 import { firestore } from "../../../firebase"
 import { Missile, Base } from "../../../types"
-import { getDoc } from "firebase/firestore"
+
 import BaseCard from "./BaseCard"
 
 export interface Missiles {

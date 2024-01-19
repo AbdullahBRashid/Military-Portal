@@ -1,7 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Button } from "../../Components/Button";
+
 import { useUser } from "../../contexts/UserContext"
 import { auth } from '../../firebase'
+
+import { Button } from "../../Components/Button";
 
 function Header() {
     const user = useUser();

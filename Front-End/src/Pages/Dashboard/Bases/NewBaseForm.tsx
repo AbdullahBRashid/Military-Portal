@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Base, MissileStorage } from "../../../types"
 import { addDoc, collection, GeoPoint } from "firebase/firestore";
-import { firestore } from "../../../firebase";
 
+import { Base } from "../../../types"
+import { firestore } from "../../../firebase";
 
 
 function NewBaseForm(props: { onUpload: () => void }) {
@@ -20,7 +20,6 @@ function NewBaseForm(props: { onUpload: () => void }) {
 
     const uploadMissile = async () => {
         try {
-            console.log(baseRef);
             await addDoc(baseRef, {
                 name: base.name,
                 location: base.location,
