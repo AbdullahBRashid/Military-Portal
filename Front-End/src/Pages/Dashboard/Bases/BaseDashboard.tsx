@@ -23,6 +23,7 @@ function BaseDashboard() {
   
       snapshot.forEach(async (doc) => {
         const baseData = doc.data() as Base;
+        baseData.id = doc.id;
         bases.push(baseData);
   
         for (const missileStorage of baseData.missiles) {
@@ -51,7 +52,7 @@ function BaseDashboard() {
         <div>
           {bases.map((base) => {
             return (
-              <BaseCard key={base.name} base={base} missiles={missiles} />
+              <BaseCard key={base.id} base={base} missiles={missiles} />
             )
           })}
         </div>

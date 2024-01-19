@@ -3,6 +3,7 @@ import BaseDashboard from "./Bases/BaseDashboard"
 import MissileDashboard from "./Missiles/MissileDashboard"
 import MissilePage from "./Missiles/MissilePage"
 import { Button } from "../../Components/Button"
+import BasePage from "./Bases/BasePage"
 
 function Dashboard() {
   return (
@@ -19,6 +20,7 @@ function Dashboard() {
       </div>
       <Routes>
         <Route path="/base" element={<BaseDashboard />} />
+        <Route path="/base/:id" element={<BasePage />} />
         <Route path="/missile" element={<MissileDashboard />} />
         <Route path="/missile/:id" element={<MissilePage />} />
       </Routes>
