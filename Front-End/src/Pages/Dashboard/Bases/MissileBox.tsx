@@ -37,8 +37,9 @@ function MissileBox(props: {baseId: string}) {
         let data = doc.data() as Base;
 
         let index = data.missiles.findIndex((store) => {
-            store.missile = missileDocRef;
+            return store.missile.id == missileId;
         })
+
         console.log(index);
         if (index == -1) {
             data.missiles.push({
