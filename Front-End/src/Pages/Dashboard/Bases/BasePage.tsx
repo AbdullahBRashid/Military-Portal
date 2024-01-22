@@ -8,6 +8,7 @@ import { Base } from "../../../types";
 
 import EditableField from "../../../Components/EditableField";
 import BaseMissiles from "./BaseMissiles";
+import { BaseProvider } from "./baseContext";
 
 const BasePage = () => {
   const { id } = useParams();
@@ -26,8 +27,9 @@ const BasePage = () => {
     const fetchData = async () => {
       const doc = await getDoc(baseRef);
       if (doc.exists()) {
-        doc.data().id = doc.id;
-        setBase(doc.data() as Base);
+        let data = doc.data();
+        data.id = doc.id;
+        setBase(data as Base);
       } else {
 
       }
@@ -37,7 +39,6 @@ const BasePage = () => {
   }, [])
 
   const handleEditField = (field: string, newValue: string) => {
-    console.log("Field: " + field + " newValue: " + newValue);
     if (field === "longitude") {
       setBase({ ...base, location: new GeoPoint(base.location.latitude, parseFloat(newValue)) });
     } else if (field === "latitude") {
@@ -69,7 +70,9 @@ const BasePage = () => {
         onEdit={(newValue: any) => handleEditField("latitude", newValue)}
         onCancel={handleCancelEdit}
       />
-      <BaseMissiles base={base} onEdit={(value) => {base.missiles = value; setBase(base)}} onCancel={() => {}}/>
+      <BaseProvider base={base}>
+        <BaseMissiles onEdit={(value) => {base.missiles = value; setBase(base)}} onCancel={() => {}}/>
+      </BaseProvider>
       <button
         onClick={() => {
           updateDoc(baseRef, base);
