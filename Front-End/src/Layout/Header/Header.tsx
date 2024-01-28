@@ -4,10 +4,15 @@ import { useUser } from "../../contexts/UserContext"
 import { auth } from '../../firebase'
 
 import { Button } from "../../Components/Button";
+import { useEffect } from "react";
 
 function Header() {
     const user = useUser();
     const navigate = useNavigate();
+
+    useEffect(() => {
+        console.log(user?.role);
+    })
 
     return (
         <header className="bg-black flex justify-center px-6 py-3 items-center flex-wrap flex-col sm:justify-between sm:flex-row sm:py-5 sm:px-10">
