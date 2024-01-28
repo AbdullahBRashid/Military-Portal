@@ -1,7 +1,7 @@
 import { firestore } from "../../../firebase"
 import { useEffect, useState } from "react"
 import { Base, Missile } from "../../../types";
-import { DocumentReference, collection, getDoc, updateDoc } from "firebase/firestore";
+import { DocumentReference, getDoc, updateDoc } from "firebase/firestore";
 
 function MissileBox(props: {baseId: string}) {
     const missilesRef = firestore.collection('missiles');

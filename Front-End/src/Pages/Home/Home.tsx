@@ -1,8 +1,6 @@
 import { Button } from "../../Components/Button";
-import { useUser } from "../../contexts/UserContext"
 
 function Home() {
-  const user = useUser();
 
   return (
       
