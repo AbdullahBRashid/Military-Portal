@@ -1,7 +1,9 @@
 import { auth, googleAuthProvider } from '../firebase';
 import { signInWithPopup } from '@firebase/auth';
+import { Button } from './Button';
+import { FcGoogle } from 'react-icons/fc';
 
-const YourComponent = () => {
+const GoogleLogin = () => {
   const signInWithGoogle = async () => {
     try {
       await signInWithPopup(auth, googleAuthProvider);
@@ -11,8 +13,10 @@ const YourComponent = () => {
   };
 
   return (
-    <button onClick={signInWithGoogle}>Sign in with Google</button>
+    <Button variant={'outline'} onClick={signInWithGoogle}>
+      <p className='mr-2'>Sign in with Google</p> <FcGoogle size="20" />
+    </Button>
   );
 };
 
-export default YourComponent;
+export default GoogleLogin;

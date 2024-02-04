@@ -32,8 +32,8 @@ function MissileCard(props: MissileCardProps) {
             <p><b>Blast Radius:</b> {missile.blastRadius}</p>
             <p><b>Range:</b> {missile.range}</p>
         </div>
-        <Link to={"/dashboard/missile/" + missile.id}><Button>Details</Button></Link>
-        <Button variant={"destructive"} onClick={deleteMissile}>Delete</Button>
+        <Link to={"/dashboard/missile/" + missile.id}><Button className="bg-blue-500 hover:bg-blue-800">Details</Button></Link>
+        <Button variant={"destructive"} className="hover:bg-red-600 ml-5" onClick={deleteMissile}>Delete</Button>
     </div>
   )
 }

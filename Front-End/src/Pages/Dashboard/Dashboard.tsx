@@ -14,12 +14,16 @@ function Dashboard() {
       <h1 className="text-center">Dashboard</h1>
 
       <div className="flex justify-center">
-        <Button className=" mr-5">
-          <Link to="/dashboard/base">Bases</Link>
-        </Button>
-        <Button>
-          <Link to="/dashboard/missile">Missiles</Link>
-        </Button>
+        <Link to="/dashboard/base">
+          <Button className=" mr-5">
+            Bases
+          </Button>
+        </Link>
+        <Link to="/dashboard/missile">
+          <Button>
+            Missiles
+          </Button>
+        </Link>
       </div>
       <Routes>
         <Route path="/base" element={<BaseDashboard />} />

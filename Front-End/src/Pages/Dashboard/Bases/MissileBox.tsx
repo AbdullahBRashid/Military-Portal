@@ -40,7 +40,6 @@ function MissileBox(props: {baseId: string}) {
             return store.missile.id == missileId;
         })
 
-        console.log(index);
         if (index == -1) {
             data.missiles.push({
                 missile: missileDocRef,

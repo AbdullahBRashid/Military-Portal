@@ -18,13 +18,10 @@ function Login() {
 
 
     return (
-        <>
-            <div>
-                <h1>Login</h1>
-            </div>
-
+        <div className="flex items-center justify-center flex-col mt-auto">
+            <h1 className='mt-10 mb-40 text-4xl'>Login</h1>
             <GoogleLogin />
-        </>
+        </div>
     )
 }
 
